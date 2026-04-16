@@ -3,7 +3,6 @@
   "name": "GitHub Everywhere",
   "version": "0.1.0",
   "description": "Biến giao diện bất kỳ trang web nào sang phong cách GitHub (light/dark).",
-  "default_locale": "en",
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": ["<all_urls>"],
   "action": {
