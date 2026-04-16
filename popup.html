@@ -16,33 +16,38 @@
     </header>
 
     <main class="body">
-      <div class="row">
-        <label class="label">Bật toàn cục</label>
-        <label class="switch">
-          <input type="checkbox" id="global" />
-          <span class="slider"></span>
-        </label>
-      </div>
+      <section class="block">
+        <div class="row stack">
+          <label class="label" for="theme">Theme</label>
+          <select id="theme">
+            <option value="auto">Auto (theo hệ thống)</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+      </section>
 
-      <div class="row">
-        <label class="label">Bật trên site hiện tại</label>
-        <label class="switch">
-          <input type="checkbox" id="host" />
-          <span class="slider"></span>
-        </label>
-      </div>
+      <section class="block">
+        <div class="row">
+          <label class="label">Site hiện tại</label>
+          <span id="current-host" class="mono">—</span>
+        </div>
+        <button id="toggle-current" class="btn btn-primary" disabled>Bật cho site này</button>
+      </section>
 
-      <div class="row stack">
-        <label class="label" for="theme">Theme</label>
-        <select id="theme">
-          <option value="auto">Auto (theo hệ thống)</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-      </div>
+      <section class="block">
+        <div class="row">
+          <label class="label">Danh sách site đã bật</label>
+          <span id="count" class="muted">0</span>
+        </div>
+        <div id="site-list" class="list"></div>
+        <div class="add-row">
+          <input id="add-host" type="text" placeholder="domain.com" />
+          <button id="add-btn" class="btn">Thêm</button>
+        </div>
+      </section>
 
-      <div class="host">Domain: <code id="hostname">—</code></div>
-      <button id="reload" class="btn">Reload tab</button>
+      <button id="reload" class="btn btn-ghost">Reload tab</button>
     </main>
 
     <script src="popup.js"></script>
