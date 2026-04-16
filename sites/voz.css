@@ -1,0 +1,179 @@
+/*
+ * GitHub Everywhere — voz.vn overrides
+ * Remaps common xenforo forum surfaces on voz to GitHub palette.
+ */
+
+html[data-gh-everywhere] body,
+html[data-gh-everywhere] .p-body,
+html[data-gh-everywhere] .p-body-inner,
+html[data-gh-everywhere] .p-pageWrapper {
+  background: var(--ghx-bg-subtle) !important;
+  color: var(--ghx-fg-default) !important;
+}
+
+/* Header */
+html[data-gh-everywhere] .p-header,
+html[data-gh-everywhere] .p-navSticky,
+html[data-gh-everywhere] .p-nav {
+  background: var(--ghx-bg-canvas) !important;
+  border-bottom: 1px solid var(--ghx-border-muted) !important;
+  box-shadow: none !important;
+}
+
+html[data-gh-everywhere] .p-nav-list .p-navEl-link,
+html[data-gh-everywhere] .p-nav a {
+  color: var(--ghx-fg-default) !important;
+  font-weight: 500 !important;
+}
+
+html[data-gh-everywhere] .p-nav-list .p-navEl.is-selected .p-navEl-link {
+  color: var(--ghx-accent) !important;
+  border-bottom: 2px solid var(--ghx-accent) !important;
+}
+
+/* Thread blocks / structItem */
+html[data-gh-everywhere] .structItem,
+html[data-gh-everywhere] .block,
+html[data-gh-everywhere] .block-container {
+  background: var(--ghx-bg-canvas) !important;
+  border-color: var(--ghx-border-muted) !important;
+  border-radius: var(--ghx-radius) !important;
+}
+
+html[data-gh-everywhere] .structItemContainer {
+  border: 1px solid var(--ghx-border-muted) !important;
+  border-radius: var(--ghx-radius) !important;
+  overflow: hidden !important;
+}
+
+html[data-gh-everywhere] .structItem + .structItem {
+  border-top: 1px solid var(--ghx-border-muted) !important;
+}
+
+html[data-gh-everywhere] .structItem-title a {
+  color: var(--ghx-fg-default) !important;
+  font-weight: 600 !important;
+}
+
+html[data-gh-everywhere] .structItem-title a:hover {
+  color: var(--ghx-accent) !important;
+}
+
+html[data-gh-everywhere] .structItem-minor,
+html[data-gh-everywhere] .structItem-cell--meta {
+  color: var(--ghx-fg-muted) !important;
+}
+
+/* Block headers */
+html[data-gh-everywhere] .block-header,
+html[data-gh-everywhere] .block-filterBar,
+html[data-gh-everywhere] .block-outer {
+  background: var(--ghx-bg-subtle) !important;
+  border-color: var(--ghx-border-muted) !important;
+  color: var(--ghx-fg-default) !important;
+  font-weight: 600 !important;
+}
+
+/* Messages / posts */
+html[data-gh-everywhere] .message,
+html[data-gh-everywhere] .message-inner,
+html[data-gh-everywhere] .message-cell {
+  background: var(--ghx-bg-canvas) !important;
+  border-color: var(--ghx-border-muted) !important;
+}
+
+html[data-gh-everywhere] .message-userDetails .username {
+  color: var(--ghx-accent) !important;
+}
+
+html[data-gh-everywhere] .message-attribution,
+html[data-gh-everywhere] .message-attribution-main,
+html[data-gh-everywhere] .message-attribution-opposite {
+  background: var(--ghx-bg-subtle) !important;
+  border-bottom: 1px solid var(--ghx-border-muted) !important;
+  color: var(--ghx-fg-muted) !important;
+}
+
+html[data-gh-everywhere] .bbWrapper {
+  color: var(--ghx-fg-default) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Code & quote blocks inside posts */
+html[data-gh-everywhere] .bbCodeBlock,
+html[data-gh-everywhere] .bbCodeCode,
+html[data-gh-everywhere] .bbCodeBlock-content {
+  background: var(--ghx-bg-muted) !important;
+  border: 1px solid var(--ghx-border-muted) !important;
+  border-radius: var(--ghx-radius) !important;
+  color: var(--ghx-fg-default) !important;
+  font-family: var(--ghx-font-mono) !important;
+}
+
+html[data-gh-everywhere] .bbCodeBlock-title {
+  background: var(--ghx-bg-subtle) !important;
+  color: var(--ghx-fg-muted) !important;
+  border-bottom: 1px solid var(--ghx-border-muted) !important;
+}
+
+/* Buttons */
+html[data-gh-everywhere] .button,
+html[data-gh-everywhere] .button--link,
+html[data-gh-everywhere] .actionBar-action {
+  background: var(--ghx-btn-bg) !important;
+  color: var(--ghx-fg-default) !important;
+  border: 1px solid var(--ghx-btn-border) !important;
+  border-radius: var(--ghx-radius) !important;
+}
+
+html[data-gh-everywhere] .button--primary {
+  background: var(--ghx-success) !important;
+  color: #ffffff !important;
+  border-color: rgba(27, 31, 36, 0.15) !important;
+}
+
+/* Sidebar */
+html[data-gh-everywhere] .p-body-sidebar .block,
+html[data-gh-everywhere] .p-body-sidebar .block-container {
+  background: var(--ghx-bg-canvas) !important;
+  border: 1px solid var(--ghx-border-muted) !important;
+}
+
+/* Breadcrumb */
+html[data-gh-everywhere] .p-breadcrumbs,
+html[data-gh-everywhere] .p-description,
+html[data-gh-everywhere] .p-title {
+  color: var(--ghx-fg-muted) !important;
+}
+
+/* Pagination */
+html[data-gh-everywhere] .pageNav-page,
+html[data-gh-everywhere] .pageNav-jump {
+  background: var(--ghx-btn-bg) !important;
+  border: 1px solid var(--ghx-btn-border) !important;
+  border-radius: var(--ghx-radius) !important;
+  color: var(--ghx-fg-default) !important;
+}
+
+html[data-gh-everywhere] .pageNav-page--current {
+  background: var(--ghx-accent) !important;
+  color: #ffffff !important;
+  border-color: var(--ghx-accent-emphasis) !important;
+}
+
+/* Tooltips / notices */
+html[data-gh-everywhere] .blockMessage,
+html[data-gh-everywhere] .notices {
+  background: var(--ghx-bg-muted) !important;
+  border: 1px solid var(--ghx-border-muted) !important;
+  border-radius: var(--ghx-radius) !important;
+  color: var(--ghx-fg-default) !important;
+}
+
+/* Footer */
+html[data-gh-everywhere] .p-footer {
+  background: var(--ghx-bg-subtle) !important;
+  border-top: 1px solid var(--ghx-border-muted) !important;
+  color: var(--ghx-fg-muted) !important;
+}

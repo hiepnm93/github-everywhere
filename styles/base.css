@@ -1,0 +1,244 @@
+/*
+ * GitHub Everywhere — base stylesheet
+ * Maps generic UI surfaces to a GitHub-inspired design system.
+ * Values are original tokens inspired by Primer design principles, not copied.
+ */
+
+:root[data-gh-everywhere="light"] {
+  --ghx-bg-canvas: #ffffff;
+  --ghx-bg-subtle: #f6f8fa;
+  --ghx-bg-muted: #eaeef2;
+  --ghx-border: #d0d7de;
+  --ghx-border-muted: #d8dee4;
+  --ghx-fg-default: #1f2328;
+  --ghx-fg-muted: #59636e;
+  --ghx-fg-subtle: #6e7781;
+  --ghx-accent: #0969da;
+  --ghx-accent-emphasis: #0550ae;
+  --ghx-danger: #cf222e;
+  --ghx-success: #1a7f37;
+  --ghx-attention: #9a6700;
+  --ghx-done: #8250df;
+  --ghx-btn-bg: #f6f8fa;
+  --ghx-btn-hover: #eef1f4;
+  --ghx-btn-border: rgba(31, 35, 40, 0.15);
+  --ghx-shadow-sm: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --ghx-shadow-md: 0 3px 6px rgba(140, 149, 159, 0.15);
+}
+
+:root[data-gh-everywhere="dark"] {
+  --ghx-bg-canvas: #0d1117;
+  --ghx-bg-subtle: #010409;
+  --ghx-bg-muted: #161b22;
+  --ghx-border: #30363d;
+  --ghx-border-muted: #21262d;
+  --ghx-fg-default: #e6edf3;
+  --ghx-fg-muted: #9198a1;
+  --ghx-fg-subtle: #6e7681;
+  --ghx-accent: #2f81f7;
+  --ghx-accent-emphasis: #1f6feb;
+  --ghx-danger: #f85149;
+  --ghx-success: #3fb950;
+  --ghx-attention: #d29922;
+  --ghx-done: #a371f7;
+  --ghx-btn-bg: #21262d;
+  --ghx-btn-hover: #30363d;
+  --ghx-btn-border: rgba(240, 246, 252, 0.1);
+  --ghx-shadow-sm: 0 0 transparent;
+  --ghx-shadow-md: 0 3px 6px rgba(1, 4, 9, 0.5);
+}
+
+/* --- Root & typography --- */
+
+html[data-gh-everywhere] {
+  --ghx-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --ghx-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+  --ghx-radius: 6px;
+  --ghx-radius-lg: 12px;
+}
+
+html[data-gh-everywhere] body,
+html[data-gh-everywhere] .container,
+html[data-gh-everywhere] #content,
+html[data-gh-everywhere] main,
+html[data-gh-everywhere] article {
+  background-color: var(--ghx-bg-canvas) !important;
+  color: var(--ghx-fg-default) !important;
+  font-family: var(--ghx-font-sans) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+html[data-gh-everywhere] code,
+html[data-gh-everywhere] pre,
+html[data-gh-everywhere] kbd,
+html[data-gh-everywhere] samp,
+html[data-gh-everywhere] tt {
+  font-family: var(--ghx-font-mono) !important;
+  font-size: 85% !important;
+  background: var(--ghx-bg-muted) !important;
+  border-radius: var(--ghx-radius) !important;
+  padding: 0.2em 0.4em !important;
+  color: var(--ghx-fg-default) !important;
+}
+
+html[data-gh-everywhere] pre {
+  padding: 12px 16px !important;
+  overflow: auto !important;
+  line-height: 1.45 !important;
+  border: 1px solid var(--ghx-border-muted) !important;
+}
+
+html[data-gh-everywhere] h1,
+html[data-gh-everywhere] h2,
+html[data-gh-everywhere] h3,
+html[data-gh-everywhere] h4,
+html[data-gh-everywhere] h5,
+html[data-gh-everywhere] h6 {
+  color: var(--ghx-fg-default) !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
+}
+
+html[data-gh-everywhere] h1 { font-size: 2em !important; border-bottom: 1px solid var(--ghx-border-muted) !important; padding-bottom: 0.3em !important; }
+html[data-gh-everywhere] h2 { font-size: 1.5em !important; border-bottom: 1px solid var(--ghx-border-muted) !important; padding-bottom: 0.3em !important; }
+html[data-gh-everywhere] h3 { font-size: 1.25em !important; }
+html[data-gh-everywhere] h4 { font-size: 1em !important; }
+
+/* --- Links --- */
+html[data-gh-everywhere] a,
+html[data-gh-everywhere] a:visited {
+  color: var(--ghx-accent) !important;
+  text-decoration: none !important;
+}
+html[data-gh-everywhere] a:hover {
+  text-decoration: underline !important;
+}
+
+/* --- Buttons / inputs --- */
+html[data-gh-everywhere] button:not([data-gh-skip]),
+html[data-gh-everywhere] input[type="button"],
+html[data-gh-everywhere] input[type="submit"],
+html[data-gh-everywhere] input[type="reset"],
+html[data-gh-everywhere] .btn,
+html[data-gh-everywhere] .button {
+  background-color: var(--ghx-btn-bg) !important;
+  color: var(--ghx-fg-default) !important;
+  border: 1px solid var(--ghx-btn-border) !important;
+  border-radius: var(--ghx-radius) !important;
+  padding: 5px 16px !important;
+  font-weight: 500 !important;
+  font-family: var(--ghx-font-sans) !important;
+  box-shadow: var(--ghx-shadow-sm) !important;
+  cursor: pointer !important;
+  transition: background-color 0.12s ease !important;
+}
+
+html[data-gh-everywhere] button:not([data-gh-skip]):hover,
+html[data-gh-everywhere] .btn:hover,
+html[data-gh-everywhere] .button:hover {
+  background-color: var(--ghx-btn-hover) !important;
+}
+
+html[data-gh-everywhere] input[type="text"],
+html[data-gh-everywhere] input[type="search"],
+html[data-gh-everywhere] input[type="email"],
+html[data-gh-everywhere] input[type="password"],
+html[data-gh-everywhere] input[type="url"],
+html[data-gh-everywhere] input[type="number"],
+html[data-gh-everywhere] textarea,
+html[data-gh-everywhere] select {
+  background: var(--ghx-bg-canvas) !important;
+  color: var(--ghx-fg-default) !important;
+  border: 1px solid var(--ghx-border) !important;
+  border-radius: var(--ghx-radius) !important;
+  padding: 5px 12px !important;
+  font-family: var(--ghx-font-sans) !important;
+  line-height: 20px !important;
+  box-shadow: inset 0 1px 0 rgba(208, 215, 222, 0.2) !important;
+}
+
+html[data-gh-everywhere] input:focus,
+html[data-gh-everywhere] textarea:focus,
+html[data-gh-everywhere] select:focus {
+  border-color: var(--ghx-accent) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3) !important;
+}
+
+/* --- Tables --- */
+html[data-gh-everywhere] table {
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  background: var(--ghx-bg-canvas) !important;
+  color: var(--ghx-fg-default) !important;
+  border: 1px solid var(--ghx-border-muted) !important;
+  border-radius: var(--ghx-radius) !important;
+  overflow: hidden !important;
+}
+html[data-gh-everywhere] th,
+html[data-gh-everywhere] td {
+  padding: 6px 13px !important;
+  border-top: 1px solid var(--ghx-border-muted) !important;
+}
+html[data-gh-everywhere] th {
+  background: var(--ghx-bg-subtle) !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+}
+html[data-gh-everywhere] tr:nth-child(2n) td {
+  background: var(--ghx-bg-subtle) !important;
+}
+
+/* --- Blockquotes / hr --- */
+html[data-gh-everywhere] blockquote {
+  padding: 0 1em !important;
+  color: var(--ghx-fg-muted) !important;
+  border-left: 0.25em solid var(--ghx-border) !important;
+  margin: 0 0 16px 0 !important;
+}
+html[data-gh-everywhere] hr {
+  height: 0.25em !important;
+  padding: 0 !important;
+  margin: 24px 0 !important;
+  background-color: var(--ghx-border-muted) !important;
+  border: 0 !important;
+}
+
+/* --- Cards / generic boxes --- */
+html[data-gh-everywhere] .card,
+html[data-gh-everywhere] .box,
+html[data-gh-everywhere] .panel,
+html[data-gh-everywhere] section {
+  background: var(--ghx-bg-canvas) !important;
+  border: 1px solid var(--ghx-border-muted) !important;
+  border-radius: var(--ghx-radius) !important;
+  box-shadow: var(--ghx-shadow-sm) !important;
+}
+
+/* --- Scrollbars --- */
+html[data-gh-everywhere] *::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+html[data-gh-everywhere] *::-webkit-scrollbar-track {
+  background: var(--ghx-bg-subtle);
+}
+html[data-gh-everywhere] *::-webkit-scrollbar-thumb {
+  background: var(--ghx-border);
+  border-radius: 6px;
+  border: 3px solid var(--ghx-bg-subtle);
+}
+html[data-gh-everywhere] *::-webkit-scrollbar-thumb:hover {
+  background: var(--ghx-fg-subtle);
+}
+
+/* --- Selection --- */
+html[data-gh-everywhere] ::selection {
+  background: rgba(47, 129, 247, 0.3);
+  color: inherit;
+}

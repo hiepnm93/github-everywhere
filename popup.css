@@ -1,0 +1,128 @@
+:root {
+  --bg: #ffffff;
+  --bg-sub: #f6f8fa;
+  --border: #d0d7de;
+  --fg: #1f2328;
+  --fg-muted: #59636e;
+  --accent: #0969da;
+  --btn-bg: #f6f8fa;
+  --btn-hover: #eef1f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --bg-sub: #161b22;
+    --border: #30363d;
+    --fg: #e6edf3;
+    --fg-muted: #9198a1;
+    --accent: #2f81f7;
+    --btn-bg: #21262d;
+    --btn-hover: #30363d;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 280px;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.hdr {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-sub);
+}
+.brand {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.body {
+  padding: 12px 14px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.row.stack {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+.label {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.host {
+  font-size: 12px;
+  color: var(--fg-muted);
+  margin: 8px 0 10px;
+}
+.host code {
+  background: var(--bg-sub);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+select {
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-family: inherit;
+}
+
+.btn {
+  width: 100%;
+  background: var(--btn-bg);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+}
+.btn:hover { background: var(--btn-hover); }
+
+/* Toggle switch */
+.switch { position: relative; display: inline-block; width: 36px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: var(--border);
+  border-radius: 20px;
+  transition: 0.18s;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: 0.18s;
+}
+.switch input:checked + .slider { background: var(--accent); }
+.switch input:checked + .slider::before { transform: translateX(16px); }
