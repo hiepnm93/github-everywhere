@@ -1502,11 +1502,39 @@ function transformProfilePage() {
     const joinDateEl = document.querySelector('.memberTooltip-dt, .joinDate');
     const joinDate = joinDateEl ? joinDateEl.textContent.trim() : '';
 
-    const messagesEl = document.querySelector('.pairs.pairs--justified dt:contains("Messages") + dd, .messageCount');
-    const messages = messagesEl ? messagesEl.textContent.trim() : '0';
+    // Find messages count - try multiple selectors
+    let messages = '0';
+    const messageCountEl = document.querySelector('.messageCount');
+    if (messageCountEl) {
+      messages = messageCountEl.textContent.trim();
+    } else {
+      // Try to find in pairs
+      const pairs = document.querySelectorAll('.pairs.pairs--justified, .pairs');
+      pairs.forEach(pair => {
+        const dt = pair.querySelector('dt');
+        if (dt && dt.textContent.includes('Messages') || dt.textContent.includes('Bài viết')) {
+          const dd = pair.querySelector('dd');
+          if (dd) messages = dd.textContent.trim();
+        }
+      });
+    }
 
-    const likesEl = document.querySelector('.pairs.pairs--justified dt:contains("Like") + dd, .likeCount');
-    const likes = likesEl ? likesEl.textContent.trim() : '0';
+    // Find likes count - try multiple selectors
+    let likes = '0';
+    const likeCountEl = document.querySelector('.likeCount, .reactionCount');
+    if (likeCountEl) {
+      likes = likeCountEl.textContent.trim();
+    } else {
+      // Try to find in pairs
+      const pairs = document.querySelectorAll('.pairs.pairs--justified, .pairs');
+      pairs.forEach(pair => {
+        const dt = pair.querySelector('dt');
+        if (dt && (dt.textContent.includes('Like') || dt.textContent.includes('Đã thích') || dt.textContent.includes('Points'))) {
+          const dd = pair.querySelector('dd');
+          if (dd) likes = dd.textContent.trim();
+        }
+      });
+    }
 
     const bioEl = document.querySelector('.userBio, .aboutSection, .signature');
     const bio = bioEl ? bioEl.innerHTML.trim() : '';
