@@ -5,7 +5,7 @@ cách GitHub — màu sắc, font, bo viền, button, table, code block…
 
 ## Phiên bản hiện tại
 
-**v1.0.8** - VOZ.vn Complete Transformation
+**v1.1.7** - Profile Page Support
 
 ## Tính năng chính
 
@@ -74,6 +74,14 @@ cách GitHub — màu sắc, font, bo viền, button, table, code block…
 - Green submit button
 - Header với navigation
 
+### Profile Pages (/u/*)
+- GitHub profile style layout
+- Avatar lớn (296x296)
+- Username, user title, join date
+- Stats: Messages, Likes
+- About section
+- Recent activity section
+
 ## Cấu trúc
 
 ```
@@ -141,6 +149,7 @@ export function init() {
 - **home**: Homepage (forum index)
 - **thread-detail**: Thread detail pages
 - **forum-list**: Forum/subforum list
+- **profile**: User profile pages
 - **auth**: Login/Register pages
 
 ## Kỹ thuật
