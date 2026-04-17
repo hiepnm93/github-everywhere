@@ -1,0 +1,503 @@
+/*
+ * GitHub Everywhere - VOZ.VN Complete Transformation
+ * This CSS replaces ALL VOZ styles with GitHub design
+ */
+
+/* ===== RESET & BASE ===== */
+html[data-gh-everywhere] {
+  --ghx-bg-canvas: #0d1117;
+  --ghx-bg-subtle: #161b22;
+  --ghx-bg-muted: #21262d;
+  --ghx-border: #30363d;
+  --ghx-border-muted: #21262d;
+  --ghx-fg-default: #c9d1d9;
+  --ghx-fg-muted: #8b949e;
+  --ghx-fg-subtle: #6e7681;
+  --ghx-accent: #58a6ff;
+  --ghx-accent-emphasis: #1f6feb;
+  --ghx-success: #238636;
+  --ghx-btn-bg: #21262d;
+  --ghx-btn-hover: #30363d;
+  --ghx-radius: 6px;
+  --ghx-radius-lg: 12px;
+}
+
+html[data-gh-everywhere="light"] {
+  --ghx-bg-canvas: #ffffff;
+  --ghx-bg-subtle: #f6f8fa;
+  --ghx-bg-muted: #f3f4f6;
+  --ghx-border: #d0d7de;
+  --ghx-border-muted: #d0d7de;
+  --ghx-fg-default: #1f2328;
+  --ghx-fg-muted: #656d76;
+  --ghx-fg-subtle: #57606a;
+  --ghx-accent: #0969da;
+  --ghx-accent-emphasis: #0550ae;
+  --ghx-success: #1a7f37;
+  --ghx-btn-bg: #f6f8fa;
+  --ghx-btn-hover: #f3f4f6;
+}
+
+/* Force remove all VOZ styles and apply GitHub base */
+html[data-gh-everywhere] body,
+html[data-gh-everywhere] * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif !important;
+  box-sizing: border-box !important;
+}
+
+html[data-gh-everywhere] body,
+html[data-gh-everywhere] .p-body,
+html[data-gh-everywhere] .p-body-inner,
+html[data-gh-everywhere] .p-pageWrapper {
+  background: var(--ghx-bg-canvas) !important;
+  color: var(--ghx-fg-default) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ===== HEADER ===== */
+html[data-gh-everywhere] .p-header,
+html[data-gh-everywhere] .p-navSticky,
+html[data-gh-everywhere] .p-nav {
+  background: var(--ghx-bg-subtle) !important;
+  border-bottom: 1px solid var(--ghx-border) !important;
+  box-shadow: none !important;
+  padding: 16px 32px !important;
+  margin: 0 !important;
+}
+
+html[data-gh-everywhere] .p-header-inner,
+html[data-gh-everywhere] .p-nav-inner {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Hide VOZ branding and navigation */
+html[data-gh-everywhere] .p-header-logo,
+html[data-gh-everywhere] .p-header-logo img,
+html[data-gh-everywhere] .p-header-logo--image {
+  display: none !important;
+}
+
+/* Hide VOZ navigation bar and breadcrumbs */
+html[data-gh-everywhere] .p-nav,
+html[data-gh-everywhere] .p-navSticky,
+html[data-gh-everywhere] .p-nav-inner,
+html[data-gh-everywhere] .p-nav-list,
+html[data-gh-everywhere] .p-navEl,
+html[data-gh-everywhere] .p-breadcrumbs,
+html[data-gh-everywhere] .p-breadcrumb,
+html[data-gh-everywhere] .p-navigation,
+html[data-gh-everywhere] .block--breadcrumb,
+html[data-gh-everywhere] .breadcrumb {
+  display: none !important;
+}
+
+/* GitHub logo replacement */
+html[data-gh-everywhere] .ghx-brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: #ffffff !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+html[data-gh-everywhere] .ghx-brand .ghx-octicon {
+  color: #ffffff !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* Navigation */
+html[data-gh-everywhere] .p-navEl-link,
+html[data-gh-everywhere] .p-nav-link {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+  border-radius: var(--ghx-radius) !important;
+}
+
+html[data-gh-everywhere] .p-navEl-link:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+html[data-gh-everywhere] .p-navEl.is-selected .p-navEl-link {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===== MAIN CONTENT ===== */
+html[data-gh-everywhere] .p-body-main {
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 24px 32px !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .p-body-main {
+  max-width: 1012px !important;
+}
+
+/* ===== HOME PAGE ===== */
+html[data-gh-everywhere][data-gh-page="home"] .block-container,
+html[data-gh-everywhere][data-gh-page="home"] .block--category {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 0 32px 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="home"] .block-header {
+  background: transparent !important;
+  border-bottom: 2px solid var(--ghx-border-muted) !important;
+  padding: 16px 0 !important;
+  margin: 0 0 16px 0 !important;
+  color: var(--ghx-fg-default) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="home"] .structItem {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--ghx-border-muted) !important;
+  padding: 16px 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  gap: 16px !important;
+  align-items: flex-start !important;
+}
+
+html[data-gh-everywhere][data-gh-page="home"] .structItem-title {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="home"] .structItem-title a {
+  color: var(--ghx-accent) !important;
+  text-decoration: none !important;
+}
+
+html[data-gh-everywhere][data-gh-page="home"] .structItem-title a:hover {
+  text-decoration: underline !important;
+}
+
+html[data-gh-everywhere][data-gh-page="home"] .structItem-minor,
+html[data-gh-everywhere][data-gh-page="home"] .structItem-meta {
+  color: var(--ghx-fg-muted) !important;
+  font-size: 12px !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="home"] .label,
+html[data-gh-everywhere][data-gh-page="home"] .labelLink {
+  background: rgba(56, 139, 253, 0.15) !important;
+  color: var(--ghx-accent) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 2px 8px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+/* ===== FORUM LIST PAGE ===== */
+html[data-gh-everywhere][data-gh-page="forum-list"] .p-title {
+  background: transparent !important;
+  border-bottom: 1px solid var(--ghx-border) !important;
+  padding: 0 0 16px 0 !important;
+  margin: 0 0 24px 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="forum-list"] .p-title h1 {
+  color: var(--ghx-fg-default) !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="forum-list"] .structItem--thread {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--ghx-border-muted) !important;
+  padding: 12px 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+}
+
+html[data-gh-everywhere][data-gh-page="forum-list"] .structItem-iconContainer {
+  width: 32px !important;
+  height: 32px !important;
+  flex-shrink: 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="forum-list"] .structItem-iconContainer::before {
+  content: "" !important;
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  background: var(--ghx-success) !important;
+  border-radius: 50% !important;
+  margin: 8px 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="forum-list"] .structItem-title {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="forum-list"] .structItem-title a {
+  color: var(--ghx-fg-default) !important;
+  text-decoration: none !important;
+}
+
+html[data-gh-everywhere][data-gh-page="forum-list"] .structItem-title a:hover {
+  color: var(--ghx-accent) !important;
+  text-decoration: underline !important;
+}
+
+html[data-gh-everywhere][data-gh-page="forum-list"] .structItem-minor {
+  color: var(--ghx-fg-muted) !important;
+  font-size: 12px !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 4px 0 0 0 !important;
+}
+
+/* ===== THREAD DETAIL PAGE ===== */
+html[data-gh-everywhere][data-gh-page="thread-detail"] .p-title {
+  background: transparent !important;
+  border-bottom: 1px solid var(--ghx-border) !important;
+  padding: 0 0 16px 0 !important;
+  margin: 0 0 24px 0 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .p-title::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 28px !important;
+  height: 28px !important;
+  background: var(--ghx-success) !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white'%3E%3Cpath d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm0-9a8 8 0 1 0 0 16A8 8 0 0 0 8 .5ZM1.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Z'/%3E%3C/svg%3E") !important;
+  background-size: 16px 16px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .p-title-value {
+  color: var(--ghx-fg-default) !important;
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+  flex: 1 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .p-title-pageAction {
+  display: none !important;
+}
+
+/* Comments */
+html[data-gh-everywhere][data-gh-page="thread-detail"] article.message {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 0 16px 0 !important;
+  display: flex !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-cell--user {
+  background: transparent !important;
+  border: none !important;
+  width: 48px !important;
+  padding: 8px 4px !important;
+  flex-shrink: 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-avatar .avatar {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  border: 1px solid var(--ghx-border) !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-cell--main {
+  background: var(--ghx-bg-canvas) !important;
+  border: 1px solid var(--ghx-border) !important;
+  border-radius: var(--ghx-radius) !important;
+  overflow: hidden !important;
+  flex: 1 !important;
+  min-height: 100px !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-attribution {
+  background: var(--ghx-bg-subtle) !important;
+  border-bottom: 1px solid var(--ghx-border) !important;
+  padding: 8px 16px !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  color: var(--ghx-fg-muted) !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-attribution a {
+  color: var(--ghx-fg-default) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-attribution a:hover {
+  color: var(--ghx-accent) !important;
+  text-decoration: underline !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-content {
+  background: transparent !important;
+  padding: 16px !important;
+  margin: 0 !important;
+  color: var(--ghx-fg-default) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-userExtras,
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-signature {
+  display: none !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .message-footer {
+  background: transparent !important;
+  border-top: 1px solid var(--ghx-border) !important;
+  padding: 8px 16px !important;
+  margin: 0 !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .actionBar-action {
+  background: transparent !important;
+  color: var(--ghx-fg-muted) !important;
+  border: none !important;
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .actionBar-action:hover {
+  background: var(--ghx-bg-muted) !important;
+  border-radius: var(--ghx-radius) !important;
+}
+
+html[data-gh-everywhere][data-gh-page="thread-detail"] .quickReply {
+  background: var(--ghx-bg-canvas) !important;
+  border: 1px solid var(--ghx-border) !important;
+  border-radius: var(--ghx-radius) !important;
+  padding: 16px !important;
+  margin: 24px 0 0 64px !important;
+}
+
+/* ===== COMMON ELEMENTS ===== */
+html[data-gh-everywhere] a {
+  color: var(--ghx-accent) !important;
+  text-decoration: none !important;
+}
+
+html[data-gh-everywhere] a:hover {
+  text-decoration: underline !important;
+}
+
+html[data-gh-everywhere] .button,
+html[data-gh-everywhere] button {
+  background: var(--ghx-btn-bg) !important;
+  border: 1px solid var(--ghx-border) !important;
+  color: var(--ghx-fg-default) !important;
+  border-radius: var(--ghx-radius) !important;
+  padding: 5px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+}
+
+html[data-gh-everywhere] .button:hover,
+html[data-gh-everywhere] button:hover {
+  background: var(--ghx-btn-hover) !important;
+}
+
+html[data-gh-everywhere] input[type="text"],
+html[data-gh-everywhere] input[type="search"],
+html[data-gh-everywhere] textarea {
+  background: var(--ghx-bg-canvas) !important;
+  border: 1px solid var(--ghx-border) !important;
+  color: var(--ghx-fg-default) !important;
+  border-radius: var(--ghx-radius) !important;
+  padding: 5px 12px !important;
+  font-size: 14px !important;
+}
+
+html[data-gh-everywhere] input:focus,
+html[data-gh-everywhere] textarea:focus {
+  border-color: var(--ghx-accent-emphasis) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.3) !important;
+}
+
+html[data-gh-everywhere] .pageNav-page {
+  background: var(--ghx-btn-bg) !important;
+  border: 1px solid var(--ghx-border) !important;
+  color: var(--ghx-fg-default) !important;
+  border-radius: var(--ghx-radius) !important;
+  padding: 5px 12px !important;
+  margin: 0 4px !important;
+}
+
+html[data-gh-everywhere] .pageNav-page--current {
+  background: var(--ghx-accent-emphasis) !important;
+  color: #ffffff !important;
+  border-color: var(--ghx-accent-emphasis) !important;
+}
+
+html[data-gh-everywhere] .p-breadcrumbs {
+  color: var(--ghx-fg-muted) !important;
+  font-size: 14px !important;
+  padding: 12px 0 !important;
+}
+
+html[data-gh-everywhere] .p-breadcrumbs a {
+  color: var(--ghx-accent) !important;
+}
+
+/* Hide ads */
+html[data-gh-everywhere] .p-header-notice,
+html[data-gh-everywhere] [id*="ads-"],
+html[data-gh-everywhere] .adsbox,
+html[data-gh-everywhere] iframe[src*="ads"] {
+  display: none !important;
+}
+
+/* Scrollbar */
+html[data-gh-everywhere] ::-webkit-scrollbar {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+html[data-gh-everywhere] ::-webkit-scrollbar-track {
+  background: var(--ghx-bg-canvas) !important;
+}
+
+html[data-gh-everywhere] ::-webkit-scrollbar-thumb {
+  background: var(--ghx-border) !important;
+  border-radius: 6px !important;
+  border: 3px solid var(--ghx-bg-canvas) !important;
+}
