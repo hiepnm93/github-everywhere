@@ -13,6 +13,7 @@ function detectPageType() {
   if (cls.includes("p-body--forum-index") || location.pathname === "/") return "home";
   if (cls.includes("thread-view") || cls.includes("p-body--thread") || /\/t\//.test(location.pathname)) return "thread-detail";
   if (cls.includes("p-body--forum-list") || /\/f\//.test(location.pathname) || /\/forums\//.test(location.pathname) || /\/s\//.test(location.pathname)) return "forum-list";
+  if (/\/u\//.test(location.pathname) && location.pathname.match(/\/u\/\d+/)) return "profile";
   if (/\/register/.test(location.pathname) || /\/login/.test(location.pathname) || cls.includes("p-body--register")) return "auth";
 
   return "other";
@@ -1484,6 +1485,257 @@ function generateGitHubHTML(data) {
   `;
 }
 
+function transformProfilePage() {
+  console.log("[GitHub Everywhere VOZ] Transforming profile page...");
+
+  try {
+    // Extract profile data
+    const usernameEl = document.querySelector('.p-name h1, .username, .memberUsername');
+    const username = usernameEl ? usernameEl.textContent.trim() : 'Unknown User';
+
+    const avatarEl = document.querySelector('.avatar.avatar--xxl, .avatar.avatar--l, .memberAvatar img');
+    const avatar = avatarEl ? (avatarEl.src || avatarEl.getAttribute('data-src')) : '';
+
+    const userTitleEl = document.querySelector('.userTitle, .memberTitle');
+    const userTitle = userTitleEl ? userTitleEl.textContent.trim() : '';
+
+    const joinDateEl = document.querySelector('.memberTooltip-dt, .joinDate');
+    const joinDate = joinDateEl ? joinDateEl.textContent.trim() : '';
+
+    const messagesEl = document.querySelector('.pairs.pairs--justified dt:contains("Messages") + dd, .messageCount');
+    const messages = messagesEl ? messagesEl.textContent.trim() : '0';
+
+    const likesEl = document.querySelector('.pairs.pairs--justified dt:contains("Like") + dd, .likeCount');
+    const likes = likesEl ? likesEl.textContent.trim() : '0';
+
+    const bioEl = document.querySelector('.userBio, .aboutSection, .signature');
+    const bio = bioEl ? bioEl.innerHTML.trim() : '';
+
+    // Step 1: Hide all VOZ elements
+    const hideStyle = document.createElement('style');
+    hideStyle.setAttribute('data-gh-hide', 'true');
+    hideStyle.textContent = `
+      /* Hide ALL VOZ elements */
+      .p-header, .p-nav, .p-navSticky, .p-nav-inner,
+      .p-breadcrumbs, .p-breadcrumb,
+      .p-body-main, .p-body-inner,
+      .p-footer, .offCanvasMenu,
+      .block-container, .block-header,
+      .memberHeader, .memberTooltip,
+      .actionBar, .pageNav {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -99999px !important;
+        pointer-events: none !important;
+      }
+
+      body {
+        background: var(--ghx-bg-canvas) !important;
+        color: var(--ghx-fg-default) !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    `;
+    document.head.appendChild(hideStyle);
+
+    // Step 2: Create GitHub-style profile page
+    const profileHTML = `
+      <div class="gh-wrapper">
+        <header class="gh-header">
+          <a href="/" class="gh-logo">${GH_MARK_SVG} voz</a>
+          <nav class="gh-nav">
+            <a href="/login/">Login</a>
+            <a href="/register/" class="gh-nav-primary">Register</a>
+          </nav>
+        </header>
+
+        <main class="gh-profile-page">
+          <div class="gh-profile-header">
+            <div class="gh-profile-avatar">
+              ${avatar ? `<img src="${avatar}" alt="${username}" />` : ''}
+            </div>
+            <div class="gh-profile-info">
+              <h1 class="gh-profile-name">${username}</h1>
+              ${userTitle ? `<p class="gh-profile-title">${userTitle}</p>` : ''}
+              ${joinDate ? `<p class="gh-profile-joined">Joined ${joinDate}</p>` : ''}
+            </div>
+            <div class="gh-profile-stats">
+              <div class="gh-profile-stat">
+                <strong>${messages}</strong>
+                <span>Messages</span>
+              </div>
+              <div class="gh-profile-stat">
+                <strong>${likes}</strong>
+                <span>Likes</span>
+              </div>
+            </div>
+          </div>
+
+          ${bio ? `
+          <div class="gh-profile-bio">
+            <h2>About</h2>
+            <div class="gh-profile-bio-content">${bio}</div>
+          </div>
+          ` : ''}
+
+          <div class="gh-profile-content">
+            <h2>Recent Activity</h2>
+            <div class="gh-profile-activity">
+              <p style="color: var(--ghx-fg-muted); padding: 16px;">No recent activity to display.</p>
+            </div>
+          </div>
+        </main>
+
+        <footer class="gh-footer">
+          <p>© 2026 GitHub, Inc.</p>
+        </footer>
+      </div>
+    `;
+
+    // Step 3: Clear body and append new content
+    document.body.innerHTML = '';
+    document.body.innerHTML = profileHTML;
+
+    // Step 4: Add profile page styles
+    const profileStyle = document.createElement('style');
+    profileStyle.setAttribute('data-gh-profile-style', 'true');
+    profileStyle.textContent = `
+      .gh-profile-page {
+        max-width: 1012px;
+        margin: 0 auto;
+        padding: 24px 32px;
+      }
+
+      .gh-profile-header {
+        display: flex;
+        gap: 24px;
+        padding: 32px 0;
+        border-bottom: 1px solid var(--ghx-border);
+        margin-bottom: 24px;
+      }
+
+      .gh-profile-avatar {
+        width: 296px;
+        height: 296px;
+        flex-shrink: 0;
+      }
+
+      .gh-profile-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid var(--ghx-border);
+      }
+
+      .gh-profile-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .gh-profile-name {
+        font-size: 32px;
+        font-weight: 600;
+        margin: 0 0 8px 0;
+        color: var(--ghx-fg-default);
+      }
+
+      .gh-profile-title {
+        font-size: 20px;
+        color: var(--ghx-fg-muted);
+        margin: 0 0 16px 0;
+      }
+
+      .gh-profile-joined {
+        font-size: 14px;
+        color: var(--ghx-fg-muted);
+        margin: 0;
+      }
+
+      .gh-profile-stats {
+        display: flex;
+        gap: 32px;
+        margin-top: 24px;
+      }
+
+      .gh-profile-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .gh-profile-stat strong {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--ghx-fg-default);
+      }
+
+      .gh-profile-stat span {
+        font-size: 14px;
+        color: var(--ghx-fg-muted);
+      }
+
+      .gh-profile-bio {
+        padding: 24px 0;
+        border-bottom: 1px solid var(--ghx-border);
+        margin-bottom: 24px;
+      }
+
+      .gh-profile-bio h2 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+        color: var(--ghx-fg-default);
+      }
+
+      .gh-profile-bio-content {
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--ghx-fg-default);
+      }
+
+      .gh-profile-content {
+        padding: 24px 0;
+      }
+
+      .gh-profile-content h2 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+        color: var(--ghx-fg-default);
+      }
+
+      @media (max-width: 768px) {
+        .gh-profile-page {
+          padding: 16px;
+        }
+
+        .gh-profile-header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .gh-profile-avatar {
+          width: 128px;
+          height: 128px;
+        }
+
+        .gh-profile-stats {
+          justify-content: center;
+        }
+      }
+    `;
+    document.head.appendChild(profileStyle);
+
+    console.log("[GitHub Everywhere VOZ] Profile page transformed successfully");
+  } catch (error) {
+    console.error("[GitHub Everywhere VOZ] Error transforming profile page:", error);
+  }
+}
+
 function transformThreadDetailPage() {
   console.log("[GitHub Everywhere VOZ] Transforming thread detail page...");
 
@@ -2186,6 +2438,18 @@ export function init() {
     } else {
       setTimeout(() => {
         transformAuthPage();
+      }, 100);
+    }
+  } else if (type === "profile") {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          transformProfilePage();
+        }, 100);
+      });
+    } else {
+      setTimeout(() => {
+        transformProfilePage();
       }, 100);
     }
   } else {
