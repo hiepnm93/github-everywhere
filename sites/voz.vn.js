@@ -467,6 +467,8 @@ function getGitHubCSS() {
       font-size: 20px;
       font-weight: 600;
       text-decoration: none;
+      position: relative;
+      z-index: 1001;
     }
 
     .gh-logo svg {
@@ -1283,13 +1285,14 @@ function getGitHubCSS() {
       color: var(--ghx-fg-muted);
     }
 
-    /* Force hide all scroll/nav buttons and ads */
+    /* Force hide all scroll/nav buttons, ads, and VOZ branding */
     .u-navButtons, .js-navButtons, .u-scrollButtons, .js-scrollButtons,
     .navButtons, .scrollButtons, .button-scroll, .scroll-button,
     .js-selectToQuoteEnd,
     pubtag, .adsbypubpower, .ad-slot, .adsbox, .ad-container,
     .advertisement, [class*="ad-"], [id*="ad-"], [class*="pub"], [id*="pub"],
-    ins, [data-ad-slot], [data-ad-client], iframe[src*="ads"], iframe[src*="banner"] {
+    ins, [data-ad-slot], [data-ad-client], iframe[src*="ads"], iframe[src*="banner"],
+    .p-header-logo, .p-header-logo img, .p-header-logo--image {
       display: none !important;
       visibility: hidden !important;
       opacity: 0 !important;
