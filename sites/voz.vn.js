@@ -1106,6 +1106,20 @@ function getGitHubCSS() {
       margin-bottom: 0;
     }
 
+    /* Ensure interactive elements in comments are clickable */
+    .gh-comment-body a,
+    .gh-comment-body button,
+    .gh-comment-body [onclick],
+    .gh-comment-body .bbCodeSpoiler,
+    .gh-comment-body .spoiler,
+    .gh-comment-body [class*="toggle"],
+    .gh-comment-body [class*="expand"],
+    .gh-comment-body [class*="collapse"] {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+      display: inline-block !important;
+    }
+
     /* Hide ads and scripts in comments */
     .gh-comment-body .adsbypubpower,
     .gh-comment-body pubtag,
