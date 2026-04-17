@@ -475,8 +475,9 @@ function getGitHubCSS() {
       width: 32px;
       height: 32px;
       color: #ffffff;
-      overflow: hidden;
-      display: block;
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     /* Theme-specific icon colors */
