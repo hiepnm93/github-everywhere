@@ -22,6 +22,46 @@
   }
   console.log("[GitHub Everywhere] Enabled for:", enabled);
 
+  // Update page title
+  if (host === "voz.vn" || host.endsWith(".voz.vn")) {
+    const originalTitle = document.title;
+    const updateTitle = () => {
+      const prefix = "GitHub/VOZ";
+      // Don't duplicate prefix
+      if (!document.title.startsWith(prefix)) {
+        document.title = `${prefix} - ${originalTitle}`;
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", updateTitle, { once: true });
+    } else {
+      updateTitle();
+    }
+  }
+
+  // Update favicon
+  if (host === "voz.vn" || host.endsWith(".voz.vn")) {
+    const updateFavicon = () => {
+      // Remove existing favicons
+      const existingFavicons = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]');
+      existingFavicons.forEach(f => f.remove());
+
+      // Add GitHub favicon
+      const githubIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' aria-hidden='true'%3E%3Cpath fill='white' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.84-.08-.08-.72-2.42-2.75C2.7 13.33.7 13 .7 8c0-4.42 3.58-8 8-8Z'/%3E%3C/svg%3E";
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.href = githubIcon;
+      document.head.appendChild(link);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", updateFavicon, { once: true });
+    } else {
+      updateFavicon();
+    }
+  }
+
   // Remove all existing stylesheets from VOZ
   console.log("[GitHub Everywhere] Removing existing stylesheets...");
   const removeAllStylesheets = () => {
