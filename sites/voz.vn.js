@@ -475,6 +475,15 @@ function getGitHubCSS() {
       color: #ffffff;
     }
 
+    /* Theme-specific icon colors */
+    html[data-gh-everywhere="light"] .gh-logo svg {
+      color: #0d1117;
+    }
+
+    html[data-gh-everywhere="dark"] .gh-logo svg {
+      color: #ffffff;
+    }
+
     .gh-nav {
       display: flex;
       gap: 8px;
